@@ -1,26 +1,44 @@
-# proyecto-micro
-Configuración inicial:
-Se establece la comunicación serial a 9600 baudios.
-Se inicializan los sensores y el servo motor.
-Se configura el LCD para mostrar la temperatura, humedad y luz.
-Se establecen los pines de entrada y salida para el fotoresistor y el LED, respectivamente.
-Bucle principal (loop):
-Se espera un tiempo de 2 segundos antes de realizar las mediciones nuevamente.
-Se leen los valores de temperatura y humedad utilizando el sensor DHT11.
-Se lee la intensidad de luz a través del fotoresistor.
-Se verifica si las lecturas son válidas (si no son NaN, es decir, no son valores inválidos).
-Se muestran los valores de temperatura, humedad y luz en el LCD y se imprimen por el puerto serial para fines de depuración.
-Se controla la velocidad del ventilador en base a la temperatura:
-Si la temperatura es mayor o igual al umbral alto, se establece la velocidad del ventilador al máximo (255).
-Si la temperatura está entre el umbral bajo y el umbral alto, se establece la velocidad del ventilador a la mitad de su capacidad (127).
-Si la temperatura es menor que el umbral bajo, se apaga el ventilador (0).
-Se controla el servo motor para abrir o cerrar la ventana según la temperatura:
-Si la temperatura es mayor o igual al umbral alto, se abre la ventana (posición 180 grados).
-Si la temperatura está entre el umbral bajo y el umbral alto, se cierra la ventana (posición 90 grados).
-Si las lecturas no son válidas, se muestra un mensaje de error en el LCD y se imprime un mensaje por el puerto serial.
-Se controla la intensidad del LED en función de la lectura del fotoresistor:
-Si la intensidad de luz es mayor que 380, se apaga el LED.
-Si la intensidad de luz es menor o igual a 380, se ajusta la intensidad del LED según el valor leído del fotoresistor.
+Introduction: 
+Welcome to the "Smart Room" project, an initiative developed as part of the academic requirements of the Microprocessors class. The concept of a smart room arises with the aim of simplifying the daily activities of the inhabitants of the home, allowing them to control various functions from anywhere within the house. This project focuses on creating an automated and adaptive environment, incorporating technologies such as a 12V LED light, a temperature-controlled fan and a servo motor for opening and closing the window. In this introduction, we will explore the overall design of the system, present a flowchart to understand its operation, and discuss the coding used for its implementation. Through this comprehensive approach, we seek to improve the quality of life of users by simplifying daily tasks and providing greater comfort in the home.
+
+ Design 
+a)	Components 
+1.	1 Arduino Uno
+2.	2 resistors of 1k ohms 
+3.	1 resistor of 12k ohms 
+4.	1 Photocell
+5.	1 DTH11 temperature sensor
+6.	2 NPN transistors (PN2222)
+7.	1 Diode Rectifier 
+8.	1 Servomotor (SG90)
+9.	1 DC Fan 12v 
+10.	1 Led Light 12v 
+11.	1 External 12v Power Supply 
+12.	1 LCD Display 20x4 
+
+Initial configuration:
+Serial communication is established at 9600 baud.
+Initialize the sensors and servo motor.
+The LCD is configured to display temperature, humidity and light.
+The input and output pins for the photoresistor and LED, respectively, are set.
+Main loop:
+A time of 2 seconds is waited before measurements are performed again.
+The temperature and humidity values are read using the DHT11 sensor.
+The light intensity is read through the photoresistor.
+Check if the readings are valid (if they are not NaN, i.e. not invalid values).
+Temperature, humidity and light values are displayed on the LCD and printed out through the serial port for debugging purposes.
+The fan speed is controlled based on the temperature:
+If the temperature is greater than or equal to the high threshold, the fan speed is set to the maximum (255).
+If the temperature is between the low threshold and the high threshold, the fan speed is set to half its capacity (127).
+If the temperature is lower than the low threshold, the fan is switched off (0).
+The servo motor is controlled to open or close the window according to the temperature:
+If the temperature is greater than or equal to the high threshold, the window is opened (position 180 degrees).
+If the temperature is between the low threshold and the high threshold, the window closes (position 90 degrees).
+If the readings are not valid, an error message is displayed on the LCD and a message is printed by the serial port.
+The LED intensity is controlled based on the photoresistor reading:
+If the light intensity is greater than 380, the LED is turned off.
+If the light intensity is less than or equal to 380, the LED intensity is adjusted according to the value read from the photoresistor.
+
 
 
 
